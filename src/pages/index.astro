@@ -1,17 +1,94 @@
 ---
-
+const steps = [
+	{
+		title: "1. Konzultáció és tervezés",
+		text: "Megismerjük a céget és a célkitűzéseidet, majd megtervezzük az oldal szerkezetét és a fő üzeneteket.",
+	},
+	{
+		title: "2. AI-asszisztált fejlesztés",
+		text: "A tartalmat és a kódot AI-támogatott folyamatunkkal építjük fel, így gyorsan készül el a gyors, letisztult weboldal.",
+	},
+	{
+		title: "3. Tesztelés és élesítés",
+		text: "Ellenőrizzük a sebességet és a SEO-beállításokat, majd közzétesszük az oldalt Cloudflare-en.",
+	},
+];
 ---
 
-<html lang="en">
+<html lang="hu">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Eurocon Web Design – Gyors, SEO-barát weboldalak</title>
+		<meta
+			name="description"
+			content="Az Eurocon Web Design gyors, SEO-barát weboldalakat épít AI-asszisztált folyamattal. Kérj ajánlatot egy modern, jól teljesítő weboldalra."
+		/>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<main>
+			<!-- Hero -->
+			<section>
+				<h1>Gyors, SEO-barát weboldalak az Eurocon Web Designtól</h1>
+				<p>
+					AI-asszisztált folyamatunkkal modern, gyorsan betöltődő és keresőbarát
+					weboldalakat építünk – kevesebb idő alatt, kiszámítható minőségben.
+				</p>
+				<p>
+					<a href="#kapcsolat">Kérj ajánlatot</a>
+				</p>
+			</section>
+
+			<!-- Probléma -->
+			<section>
+				<h2>A probléma</h2>
+				<p>
+					Sok kisvállalkozás weboldala lassú, nehezen található meg a Google-ben,
+					és a frissítése túl sok időt vesz igénybe. Ez ügyfeleket és bevételt jelent
+					kiesésben.
+				</p>
+			</section>
+
+			<!-- Megoldás -->
+			<section>
+				<h2>A megoldásunk</h2>
+				<p>
+					Statikusan renderelt, valódi HTML-re épülő weboldalakat készítünk, amelyek
+					villámgyorsan töltődnek be és könnyen optimalizálhatók a keresőkre. Az
+					AI-asszisztált pipeline-unk felgyorsítja a fejlesztést, így gyorsabban
+					juthatsz kész, jól teljesítő oldalhoz.
+				</p>
+			</section>
+
+			<!-- Folyamat -->
+			<section>
+				<h2>Hogyan dolgozunk – 3 lépésben</h2>
+				<ol>
+					{
+						steps.map((step) => (
+							<li>
+								<h3>{step.title}</h3>
+								<p>{step.text}</p>
+							</li>
+						))
+					}
+				</ol>
+			</section>
+
+			<!-- Kapcsolat CTA -->
+			<section id="kapcsolat">
+				<h2>Kezdjük el a projektedet</h2>
+				<p>
+					Szeretnél gyors, SEO-barát weboldalt? Írj nekünk, és segítünk
+					megtervezni a következő lépéseket.
+				</p>
+				<p>
+					<a href="mailto:hello@euroconwebdesign.hu">hello@euroconwebdesign.hu</a>
+				</p>
+			</section>
+		</main>
 	</body>
 </html>
