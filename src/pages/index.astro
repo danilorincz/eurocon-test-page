@@ -90,5 +90,129 @@ const steps = [
 				</p>
 			</section>
 		</main>
+
+		<!-- Chatbox widget -->
+		<div id="chatbox">
+			<button id="chat-toggle" type="button" aria-expanded="false" aria-controls="chat-panel">
+				Chat
+			</button>
+			<div id="chat-panel" role="dialog" aria-label="Chat" hidden>
+				<div id="chat-header">Eurocon Web Design</div>
+				<div id="chat-messages">
+					<p class="chat-bot">Szia! Miben segíthetünk?</p>
+				</div>
+				<form id="chat-form">
+					<input
+						id="chat-input"
+						type="text"
+						placeholder="Írd ide az üzeneted…"
+						autocomplete="off"
+						aria-label="Üzenet"
+					/>
+					<button type="submit">Küldés</button>
+				</form>
+			</div>
+		</div>
+
+		<style>
+			#chatbox {
+				position: fixed;
+				right: 1rem;
+				bottom: 1rem;
+				z-index: 1000;
+				font-family: system-ui, sans-serif;
+			}
+			#chat-toggle {
+				padding: 0.6rem 1.1rem;
+				border: none;
+				border-radius: 999px;
+				background: #1a56db;
+				color: #fff;
+				cursor: pointer;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+			}
+			#chat-panel {
+				width: 280px;
+				margin-top: 0.5rem;
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				background: #fff;
+				box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+				overflow: hidden;
+			}
+			#chat-header {
+				padding: 0.6rem 0.8rem;
+				background: #1a56db;
+				color: #fff;
+				font-weight: 600;
+			}
+			#chat-messages {
+				padding: 0.8rem;
+				max-height: 200px;
+				overflow-y: auto;
+			}
+			#chat-messages p {
+				margin: 0 0 0.5rem;
+				padding: 0.4rem 0.6rem;
+				border-radius: 6px;
+				background: #f1f1f1;
+			}
+			#chat-messages p.chat-user {
+				background: #dbeafe;
+				text-align: right;
+			}
+			#chat-form {
+				display: flex;
+				border-top: 1px solid #eee;
+			}
+			#chat-input {
+				flex: 1;
+				border: none;
+				padding: 0.6rem;
+			}
+			#chat-form button {
+				border: none;
+				background: #1a56db;
+				color: #fff;
+				padding: 0 0.9rem;
+				cursor: pointer;
+			}
+		</style>
+
+		<script>
+			const toggle = document.getElementById("chat-toggle");
+			const panel = document.getElementById("chat-panel");
+			const form = document.getElementById("chat-form");
+			const input = document.getElementById("chat-input") as HTMLInputElement;
+			const messages = document.getElementById("chat-messages");
+
+			toggle?.addEventListener("click", () => {
+				const isOpen = !panel?.hasAttribute("hidden");
+				if (isOpen) {
+					panel?.setAttribute("hidden", "");
+				} else {
+					panel?.removeAttribute("hidden");
+				}
+				toggle.setAttribute("aria-expanded", String(!isOpen));
+				if (!isOpen) input?.focus();
+			});
+
+			form?.addEventListener("submit", (e) => {
+				e.preventDefault();
+				const text = input.value.trim();
+				if (!text) return;
+				const userMsg = document.createElement("p");
+				userMsg.className = "chat-user";
+				userMsg.textContent = text;
+				messages?.appendChild(userMsg);
+				input.value = "";
+
+				const botMsg = document.createElement("p");
+				botMsg.className = "chat-bot";
+				botMsg.textContent = "Köszönjük az üzenetet! Hamarosan válaszolunk.";
+				messages?.appendChild(botMsg);
+				if (messages) messages.scrollTop = messages.scrollHeight;
+			});
+		</script>
 	</body>
 </html>
